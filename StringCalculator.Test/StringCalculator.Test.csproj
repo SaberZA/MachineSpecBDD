@@ -51,6 +51,14 @@
       <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="StructureMap, Version=4.1.2.386, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.1.2.386\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=4.1.2.386, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.1.2.386\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -66,14 +74,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Calculator.cs" />
-    <Compile Include="CalculatorSpec.cs" />
-    <Compile Include="NegativeException.cs" />
+    <Compile Include="Implementation\Rules\ICalculatorRule.cs" />
+    <Compile Include="Implementation\Rules\NoNegativesRule.cs" />
+    <Compile Include="Implementation\Rules\NumbersMoreThanAThousandAreZero.cs" />
+    <Compile Include="Tests\CalculatorTestContext.cs" />
+    <Compile Include="Implementation\Parser\CalculationStringParser.cs" />
+    <Compile Include="Implementation\Calculator.cs" />
+    <Compile Include="Tests\CalculatorSpec.cs" />
+    <Compile Include="Implementation\Parser\IStringParser.cs" />
+    <Compile Include="Implementation\NegativeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
